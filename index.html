@@ -273,6 +273,8 @@
 
 			.btn-primary {
 				padding: 10px 40px;
+				max-width: 220px;
+				width: 100%;
  				color: #fff;
 				border: 1px solid #34373c;
 				background: #34373c;
@@ -292,6 +294,11 @@
 				transition: all 0.5s ease 0s;  ;
 			}
 
+			.btn-absolute {
+				position: absolute;
+				bottom: 50px;
+				right: 30px;
+			}
 
 			@media (hover: hover) {
 				.btn-primary:hover {
@@ -362,7 +369,8 @@
 			</div>
 
 			<hr />
-			<select id="keys"></select> <span id="ttime">0</span><br /><br />			
+			<select id="keys"></select> <span id="ttime">0</span><br /><br />	
+			<button class="btn-absolute btn-primary">Sauvegarder</button>		
 		</div>
 		<div id="dialogs">
 			<div id="dialog-add-text" class="dialog-backdrop">
