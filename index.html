@@ -143,7 +143,7 @@
 			
 			.dialog-backdrop.active 
 			{
-				display:block;
+				display:flex;
 			}
 			
 			.dialog
@@ -152,11 +152,15 @@
 				border:1px solid black;
 				background-color:white;
 				position:absolute;
-				display:block;
+				display:flex;
+				flex-direction: column;
 				top:50%;
 				left:50%;
 				transform:translate( -50%, -50% );
 				box-shadow:0 24px 48px rgba( 0, 0, 0, 0.1 ), 0 16px 16px rgba( 0, 0, 0, 0.25 );
+				width: 100%;
+				max-width: 600px;
+				min-height: 200px;
 			}
 			
 			#dialog-image-library > .dialog, #dialog-svg-library > .dialog, #dialog-svg-pattern-library > .dialog
@@ -184,6 +188,15 @@
 				height:170px;
 				float:left;
 				padding:5px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.dialog-image-list-item .btn-primary {
+				width: 100%;
+				text-align: center;
 			}
 			
 			.dialog-image-list-item-image 
@@ -244,15 +257,50 @@
 			
 			.dialog-form-actions 
 			{
-				text-align:right;
+				text-align:center;
 				padding-top:20px;
+				margin-top: auto;
 				box-sizing:border-box;
+				display: flex;
+				justify-content: center;
+				gap: 40px;
 			}
 			
 			#ttime
 			{
 				font-size:12px;
 			}
+
+			.btn-primary {
+				padding: 10px 40px;
+ 				color: #fff;
+				border: 1px solid #34373c;
+				background: #34373c;
+				font: 600 13px/22px "Open Sans",sans-serif;
+				text-transform: uppercase;
+				display: inline-block;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				user-select: none;
+				border-radius: 0;
+				white-space: nowrap;
+				letter-spacing: .5px;
+				-webkit-transition: all 0.5s ease 0s;
+				-moz-transition: all 0.5s ease 0s;
+				-o-transition: all 0.5s ease 0s;
+				transition: all 0.5s ease 0s;  ;
+			}
+
+
+			@media (hover: hover) {
+				.btn-primary:hover {
+					color: #fff;
+					background-color: gray;
+					border-color: gray;
+				}
+			}
+
 		</style>
 	</head>
 	<body>
@@ -326,8 +374,8 @@
 					  </label>
 					</div>
 					<div class="dialog-form-actions">
-						<button class="dialog-action-add">Ajouter</button>
-						<button class="dialog-action-cancel">Annuler</button>
+						<button class="dialog-action-add btn-primary">Ajouter</button>
+						<button class="dialog-action-cancel btn-primary">Annuler</button>
 					</div>
 				</div>
 			</div>
@@ -337,7 +385,7 @@
 					<div class="dialog-image-list"></div>
 					<div class="dialog-form-actions">	
 						<input type="file" id="dialog-image-library-file-input" class="hidden" accept=".png, .jpg, .jpeg" />		
-						<button id="dialog-image-library-browse-button">Charger</button>
+						<button id="dialog-image-library-browse-button btn-primary">Charger</button>
 						<!--<button class="dialog-action-close">Supprimer</button>-->					
 					</div>
 				</div>
@@ -3159,9 +3207,9 @@
 									'<span>' + color.name + '</span><br />' +
 									'<input type="color" value="' + color.hex + '"></input>' +
 									'<span class="cmyk">' + RGB2CMYK( color.hex ) + '</span>' +
-									'<button>Choisir un motif</button>' +
-									'<button>Modifier le motif</button>' +
-									'<button>x</button><br /><br />';
+									'<button class="btn-primary">Choisir un motif</button>' +
+									'<button class="btn-primary">Modifier le motif</button>' +
+									'<button class="btn-primary">x</button><br /><br />';
 									
 								const colorInput = colorGroup.querySelector( 'input' );
 								const colorInputInfo = colorGroup.querySelector( '.cmyk' );
@@ -3923,7 +3971,7 @@
 							'beforeend', 
 							'<div data-uuid="' + uuid + '" class="dialog-image-list-item">' +
 								'<div class="dialog-image-list-preview" style="background-image:url(' + svgPatternLibrary.getData( uuid ).canvas.toDataURL() + ');"></div>' + 
-								'<button>Utiliser</button>' + 
+								'<button class="btn-primary">Utiliser</button>' + 
 							'</div>' 
 						);
 						
@@ -3979,6 +4027,7 @@
 						image.classList.add( 'dialog-image-list-item-image' );
 
 						addButton.textContent = 'Utiliser';
+						addButton.classList.add('btn-primery')
 						addButton.onclick = () => 
 						{
 							textureFactory.setHoverEnabled( true );
@@ -4098,6 +4147,7 @@
 						image.classList.add( 'dialog-image-list-item-image' );
 					
 						addButton.textContent = 'Utiliser';
+						addButton.classList.add('btn-primery')
 						addButton.onclick = () => 
 						{
 							textureFactory.setHoverEnabled( true );
@@ -4107,6 +4157,7 @@
 						};
 
 						removeButton.textContent = 'Suprimer';
+						removeButton.classList.add('btn-primery')
 						removeButton.onclick = () => imageLibrary.remove( uuid );
 
 						group.classList.add( 'dialog-image-list-item' );
