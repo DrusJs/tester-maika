@@ -344,6 +344,11 @@
 				overflow-y:scroll;
 				overflow-x:hidden;
 				float:right;
+				margin-right: -20px;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				gap: 6px;
 			}
 			
 			.dialog-pattern-variants-preview
@@ -390,6 +395,20 @@
 				font-size:12px;
 			}
 
+			@media (max-width: 800px) {
+				.dialog-pattern-variants {
+					flex-direction: row;
+				}
+				#dialog-pattern-editor .dialog-pattern-group {
+					display: flex;
+					flex-direction: column;
+					gap: 6px;
+				}
+				.dialog-pattern-group {
+					width: 100%;
+					max-width: 700px;
+				}
+			}
 
 
 		</style>
