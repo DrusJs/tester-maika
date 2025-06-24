@@ -108,6 +108,9 @@
 				-o-transition: all 0.5s ease 0s;
 				transition: all 0.5s ease 0s;  ;
 			}
+			.btn-primary.btn-delete {
+				background-color: darkred;
+			}
 
 			.btn-close {
 				width: 30px;
@@ -174,6 +177,11 @@
 					color: #fff;
 					background-color: gray;
 					border-color: gray;
+				}
+				.btn-primary.btn-delete {
+					color: #fff;
+					background-color: rgb(182, 0, 0);
+					border: darkred;
 				}
 			}
 			
@@ -365,6 +373,14 @@
 				padding: 10px 20px;
 				outline: none;
 			}
+
+			.text-field {
+				padding: 12px;
+			}
+
+			hr + span {
+				padding: 0 10px 10px 0;
+			}
 			
 			#ttime
 			{
@@ -398,7 +414,7 @@
 					<div class="tab-panel" data-name="text">
 						<button class="add-text-button full-width hidden">Ajouter un texte</button>
 						<div id="tabpanel-text-controls" class="hidden">
-							<input type="text" id="tabpanel-text-input" /><button id="tabpanel-actions-delete-text">Supprimer</button><br />
+							<input type="text" id="tabpanel-text-input" class="text-field" /><button id="tabpanel-actions-delete-text" class="btn-primary">Supprimer</button><br />
 							<hr />
 							<span>Police</span><select id="tabpanel-text-font-select"></select><br />
 							<hr />
@@ -3283,7 +3299,7 @@
 									'<span class="cmyk">' + RGB2CMYK( color.hex ) + '</span>' +
 									'<button class="btn-primary">Choisir un motif</button>' +
 									'<button class="btn-primary">Modifier le motif</button>' +
-									'<button class="btn-primary">x</button><br /><br />';
+									'<button class="btn-primary btn-delete">x</button><br /><br />';
 									
 								const colorInput = colorGroup.querySelector( 'input' );
 								const colorInputInfo = colorGroup.querySelector( '.cmyk' );
@@ -3957,6 +3973,7 @@
 						//
 						
 						decreaseScaleButton.textContent = '-';
+						decreaseScaleButton.classList.add('btn-primary', 'btn-sm')
 						decreaseScaleButton.onclick = () =>
 						{
 							if( color.patternData.scale > minScale )
@@ -3973,6 +3990,7 @@
 						};
 						
 						increaseScaleButton.textContent = '+';
+						increaseScaleButton.classList.add('btn-primary', 'btn-sm')
 						increaseScaleButton.onclick = () =>
 						{
 							if( color.patternData.scale < maxScale )
@@ -3989,6 +4007,7 @@
 						};
 
 						savePatternButton.textContent = 'Sauvegarder';
+						savePatternButton.classList.add('btn-primary')
 						savePatternButton.style.float = 'right';
 						savePatternButton.onclick = () => 
 						{
@@ -3998,6 +4017,7 @@
 						};
 						
 						unsavePatternButton.textContent = 'unsave';
+						unsavePatternButton.classList.add('btn-primary')
 						unsavePatternButton.style.float = 'right';
 						unsavePatternButton.onclick = () => 
 						{
