@@ -165,6 +165,9 @@
 				padding: 5px 20px;
 				font: 600 12px/16px "Open Sans",sans-serif;
 			}
+			.btn-primary.btn-fit {
+				width: fit-content;
+			}
 
 			.btn-absolute {
 				position: fixed;
@@ -3973,7 +3976,7 @@
 						//
 						
 						decreaseScaleButton.textContent = '-';
-						decreaseScaleButton.classList.add('btn-primary', 'btn-sm')
+						decreaseScaleButton.classList.add('btn-primary', 'btn-sm', 'btn-fit')
 						decreaseScaleButton.onclick = () =>
 						{
 							if( color.patternData.scale > minScale )
@@ -3990,7 +3993,7 @@
 						};
 						
 						increaseScaleButton.textContent = '+';
-						increaseScaleButton.classList.add('btn-primary', 'btn-sm')
+						increaseScaleButton.classList.add('btn-primary', 'btn-sm', 'btn-fit')
 						increaseScaleButton.onclick = () =>
 						{
 							if( color.patternData.scale < maxScale )
